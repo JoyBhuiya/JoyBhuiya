@@ -7,6 +7,12 @@ proved it.
 
 **→ [joybhuiya.github.io/JoyBhuiya](https://joybhuiya.github.io/JoyBhuiya/)**
 
+> **One-time setup:** GitHub Pages needs switching on before the first deploy
+> can finish — go to **Settings → Pages → Source** and choose **GitHub Actions**,
+> then re-run the workflow. The build, tests and content checks all pass without
+> it; only the publish step is blocked, because the workflow token isn't allowed
+> to create the Pages site itself.
+
 ## What it does
 
 - **Practice by chapter** — pick a chapter, a length, and whether to focus on
