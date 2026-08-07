@@ -10,9 +10,14 @@ type Loader = () => Promise<{ questions: Question[] }>;
 const SHARDS: Record<ChapterId, Loader[]> = {
   1: [() => import('./ch1')],
   2: [() => import('./ch2')],
-  3: [() => import('./ch3a'), () => import('./ch3b'), () => import('./ch3c')],
-  4: [() => import('./ch4a'), () => import('./ch4b')],
-  5: [() => import('./ch5a'), () => import('./ch5b')],
+  3: [
+    () => import('./ch3a'),
+    () => import('./ch3b'),
+    () => import('./ch3c'),
+    () => import('./ch3d'),
+  ],
+  4: [() => import('./ch4a'), () => import('./ch4b'), () => import('./ch4c')],
+  5: [() => import('./ch5a'), () => import('./ch5b'), () => import('./ch5c')],
 };
 
 const cache = new Map<ChapterId, Question[]>();
