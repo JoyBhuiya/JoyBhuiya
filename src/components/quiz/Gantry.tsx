@@ -46,19 +46,22 @@ export function Gantry({
 
   return (
     <div
-      className={cn('relative flex h-9 w-full items-stretch gap-[2px]', className)}
+      className={cn('relative flex h-9 w-full items-stretch gap-[2px] pt-[5px]', className)}
       role="img"
       aria-label={label}
     >
       {states.map((state, index) => (
-        <div
-          key={index}
-          className={cn(
-            'relative flex-1 rounded-[2px] transition-colors duration-200',
-            FILL[state],
-            index === currentIndex && 'ring-ink ring-2 ring-offset-1 ring-offset-[--paper]',
+        <div key={index} className="relative flex-1">
+          <div className={cn('h-full w-full rounded-[2px] transition-colors duration-200', FILL[state])} />
+          {/*
+            A ring around the current segment disappears once that segment is
+            filled. A marker sitting above the strip stays legible whatever the
+            segment beneath it is doing.
+          */}
+          {index === currentIndex && (
+            <div className="bg-ink absolute -top-[5px] right-0 left-0 h-[3px] rounded-full" />
           )}
-        />
+        </div>
       ))}
 
       {showPassMark && (

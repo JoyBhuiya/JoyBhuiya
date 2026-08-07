@@ -8,6 +8,7 @@ import { chapterMastery, computeReadiness, lifetimeStats } from '@/lib/scoring';
 import { displayedStreak } from '@/lib/streak';
 import { BADGES, getBadge } from '@/lib/badges';
 import { ReadinessGauge } from '@/components/dashboard/ReadinessGauge';
+import { Gantry } from '@/components/quiz/Gantry';
 import { Card, CardBody } from '@/components/ui/Card';
 import { LinkButton, Button } from '@/components/ui/Button';
 import { formatDate, pluralise } from '@/lib/format';
@@ -55,11 +56,23 @@ export default function Dashboard() {
             <br />
             already knowing you’ll pass.
           </h1>
-          <p className="text-ink-muted mt-4 max-w-xl leading-relaxed">
-            {bankSize > 0 ? `${bankSize} practice questions` : 'Practice questions'} across all
-            five chapters of the official handbook, full timed mock exams, and a readiness score
-            that only says you’re ready once you’ve actually proved it.
-          </p>
+
+          {/*
+            The pass mark is the whole point of the exercise, so show it rather
+            than describing it: 24 blocks, and the line you have to get past.
+          */}
+          <div className="mt-9 max-w-xl">
+            <Gantry
+              states={Array.from({ length: 24 }, (_, i) => (i < 18 ? 'correct' : 'empty'))}
+              label={`A mock exam is 24 questions. You need ${EXAM_PASS_MARK} right to pass.`}
+            />
+            <p className="text-ink-muted mt-8 leading-relaxed">
+              {bankSize > 0 ? `${bankSize} practice questions` : 'Practice questions'} across all
+              five chapters of the official handbook, full timed mock exams, and a readiness score
+              that only says you’re ready once you’ve actually proved it.
+            </p>
+          </div>
+
           <div className="mt-7 flex flex-wrap gap-3">
             <LinkButton to="/practice" size="lg">
               Start practising
@@ -205,7 +218,11 @@ export default function Dashboard() {
         </div>
 
         <ul className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
-          {BADGES.filter((badge) => !badge.secret || badge.id in state.badges).map((badge) => {
+          {BADGES.filter((badge) => !badge.secret || badge.id in state.badges)
+            // A wall of sixteen greyed-out cards is a poor first impression;
+            // show a handful until there is progress worth displaying.
+            .slice(0, isNewcomer ? 6 : undefined)
+            .map((badge) => {
             const unlockedAt = state.badges[badge.id];
             const unlocked = Boolean(unlockedAt);
             const progress = !unlocked && badge.progress

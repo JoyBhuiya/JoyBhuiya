@@ -161,7 +161,8 @@ export default function SessionPage() {
         />
       </header>
 
-      <div className={cn('flex-1 pt-8', isExam && 'pt-10')}>
+      {/* Centred so a two-option true/false doesn't leave the screen half empty. */}
+      <div className={cn('flex flex-1 flex-col justify-center py-8', isExam && 'pt-10')}>
         <QuestionCard
           question={current.question}
           optionOrder={current.optionOrder}
