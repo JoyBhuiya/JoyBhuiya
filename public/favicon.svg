@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Life in the UK test practice">
+  <rect width="64" height="64" rx="14" fill="#0A3C7D"/>
+  <rect x="6" y="6" width="52" height="52" rx="9" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2.5"/>
+  <!-- Four of the gantry's segments, with the pass-mark rule after the third. -->
+  <g fill="#ffffff">
+    <rect x="14" y="26" width="7" height="12" rx="1.5"/>
+    <rect x="23" y="26" width="7" height="12" rx="1.5"/>
+    <rect x="32" y="26" width="7" height="12" rx="1.5"/>
+    <rect x="43" y="26" width="7" height="12" rx="1.5" fill-opacity="0.3"/>
+  </g>
+  <rect x="40.5" y="22" width="2.5" height="20" rx="1" fill="#E8A33D"/>
+</svg>

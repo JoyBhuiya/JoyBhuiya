@@ -1,0 +1,111 @@
+/*
+ * Design tokens — British public signage.
+ *
+ * The palette is lifted from the Kinneir & Calvert road sign system: motorway
+ * blue for primary actions, primary-route green for "correct", regulatory red
+ * for "incorrect", and amber for "flagged". It reads as official without
+ * resorting to flags and landmarks, and it is high-contrast by construction
+ * because signage has to be legible at speed.
+ *
+ * Every colour is defined on bare :root first so nothing depends on a media
+ * query resolving. Dark is then applied for [data-theme='dark'] only — the
+ * pre-paint script in index.html always stamps an explicit theme, so there is
+ * no unstyled state to guard against.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --paper: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #eaecf0;
+  --surface-3: #dfe3ea;
+
+  /* Text */
+  --ink: #10141c;
+  --ink-muted: #4a5464;
+  --ink-faint: #6b7688;
+
+  /* Structure */
+  --line: #d4d8e0;
+  --line-strong: #b6bdca;
+
+  /* Signage accents */
+  --motorway: #0a3c7d;
+  --motorway-hi: #0e4e9e;
+  --motorway-soft: #e3ecf8;
+  --on-motorway: #ffffff;
+
+  --route: #00703c;
+  --route-soft: #dff0e6;
+  --on-route: #ffffff;
+
+  --warning: #b9761a;
+  --warning-bold: #e8a33d;
+  --warning-soft: #fbf0dd;
+  --on-warning: #10141c;
+
+  --stop: #c0362c;
+  --stop-soft: #fae3e1;
+  --on-stop: #ffffff;
+
+  /* Focus ring — same in both themes so it never disappears */
+  --focus: #0e4e9e;
+
+  /* Type */
+  --font-display: 'Familjen Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Public Sans Variable', 'Public Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Elevation — restrained; signage is flat, so shadows stay as hairlines */
+  --shadow-sm: 0 1px 2px rgb(16 20 28 / 0.06);
+  --shadow-md: 0 2px 8px rgb(16 20 28 / 0.08);
+  --shadow-lg: 0 8px 28px rgb(16 20 28 / 0.12);
+
+  /* Geometry — UK sign plates have generously rounded corners */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-plate: 14px;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --paper: #0c0f16;
+  --surface: #141924;
+  --surface-2: #1e2533;
+  --surface-3: #283040;
+
+  --ink: #e9ecf2;
+  --ink-muted: #a3adbe;
+  --ink-faint: #7d879a;
+
+  --line: #2a3242;
+  --line-strong: #3a4457;
+
+  --motorway: #4c8de0;
+  --motorway-hi: #6ba3ea;
+  --motorway-soft: #16243a;
+  --on-motorway: #06111f;
+
+  --route: #45b782;
+  --route-soft: #10241b;
+  --on-route: #04170e;
+
+  --warning: #f0b85e;
+  --warning-bold: #f0b85e;
+  --warning-soft: #241c10;
+  --on-warning: #1a1206;
+
+  --stop: #ef7c70;
+  --stop-soft: #2a1512;
+  --on-stop: #200806;
+
+  --focus: #7fb2f0;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 2px 8px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 8px 28px rgb(0 0 0 / 0.55);
+}

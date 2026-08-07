@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="theme-color" content="#0A3C7D" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0C0F16" media="(prefers-color-scheme: dark)" />
+    <title>Life in the UK Test — Practice Questions &amp; Mock Exams</title>
+    <meta
+      name="description"
+      content="Free practice questions and timed mock exams for the Life in the UK Test. 24 questions, 45 minutes, 18 to pass. Track your readiness across all five handbook chapters. Works offline."
+    />
+    <script>
+      // Applied before first paint so the page never flashes the wrong theme.
+      (function () {
+        try {
+          var raw = localStorage.getItem('luk:v1');
+          var pref = raw ? JSON.parse(raw).settings.theme : 'system';
+          var dark =
+            pref === 'dark' ||
+            (pref !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        } catch (e) {
+          document.documentElement.dataset.theme = window.matchMedia(
+            '(prefers-color-scheme: dark)',
+          ).matches
+            ? 'dark'
+            : 'light';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
