@@ -15,9 +15,20 @@ const SHARDS: Record<ChapterId, Loader[]> = {
     () => import('./ch3b'),
     () => import('./ch3c'),
     () => import('./ch3d'),
+    () => import('./ch3e'),
   ],
-  4: [() => import('./ch4a'), () => import('./ch4b'), () => import('./ch4c')],
-  5: [() => import('./ch5a'), () => import('./ch5b'), () => import('./ch5c')],
+  4: [
+    () => import('./ch4a'),
+    () => import('./ch4b'),
+    () => import('./ch4c'),
+    () => import('./ch4d'),
+  ],
+  5: [
+    () => import('./ch5a'),
+    () => import('./ch5b'),
+    () => import('./ch5c'),
+    () => import('./ch5d'),
+  ],
 };
 
 const cache = new Map<ChapterId, Question[]>();
